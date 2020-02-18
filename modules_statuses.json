@@ -1,0 +1,8 @@
+{
+    "Org": true,
+    "Product": true,
+    "Cart": true,
+    "Catalog": true,
+    "Order": true,
+    "Contact": true
+}
