@@ -85,7 +85,7 @@
         </div>
         @if($product->main_image)
         <div class="col">
-          <img src="/storage/main_image/{{$product->main_image}}" alt="" style="max-width:400px;mah-heigh:400px">
+          <img src="{{$product->main_image}}" alt="" style="max-width:400px;max-heigh:400px">
         </div>
         @endif
       </div>

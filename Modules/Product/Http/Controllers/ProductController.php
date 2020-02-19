@@ -62,12 +62,13 @@ class ProductController extends Controller
             // Get just ext
             $extention = $request->file('main_image')->getClientOriginalExtension();
             // Filename to store
-            $fileNameToStore = $filename."_".time().".".$extention;
+            $fileNameToStore = "main_image/".$filename."_".time().".".$extention;
             // Upload image
-            $path = $request->file('main_image')->storeAs('public/main_image', $fileNameToStore);
+            $path = $request->file('main_image')->storeAs('public/', $fileNameToStore);
         }else{
-            $fileNameToStore = 'noimage.jpg';
+            $fileNameToStore = 'main_image/noimage.jpg';
         }
+        $fileNameToStore . "storage/";
 
         $product = new Product;
         $product->product_category_id = $request->input('product_category_id');
@@ -138,9 +139,10 @@ class ProductController extends Controller
             // Get just ext
             $extention = $request->file('main_image')->getClientOriginalExtension();
             // Filename to store
-            $fileNameToStore = $filename."_".time().".".$extention;
+            $fileNameToStore = "main_image/".$filename."_".time().".".$extention;
             // Upload image
-            $path = $request->file('main_image')->storeAs('public/main_image', $fileNameToStore);
+            $path = $request->file('main_image')->storeAs('public/', $fileNameToStore);
+            $fileNameToStore = "storage/".$fileNameToStore;
         }else{
             $fileNameToStore = $product->main_image;
         }

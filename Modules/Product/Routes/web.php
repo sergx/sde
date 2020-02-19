@@ -11,26 +11,29 @@
 |
 */
 
-Route::prefix('product')->group(function() {
-    Route::get('/', 'ProductController@index');
-});
 
 Route::prefix('product_category')->group(function() {
-    Route::get(     '/',                    'ProductCategoryController@index')      ->name('product_category.index');
-    Route::get(     '/create',              'ProductCategoryController@create')     ->name('product_category.create');
-    Route::post(    '/',                    'ProductCategoryController@store')      ->name('product_category.store');
-    Route::get(     '/{id}',                'ProductCategoryController@show')       ->name('product_category.show');
-    Route::get(     '/{id}/edit',           'ProductCategoryController@edit')       ->name('product_category.edit');
-    Route::put(     '/{id}',                'ProductCategoryController@update')     ->name('product_category.update');
-    Route::delete(  '/{id}',                'ProductCategoryController@destroy')    ->name('product_category.destroy');
+    $prefix = "product_category";
+    $controllerName = "ProductCategoryController";
+
+    Route::get(     '/',                    $controllerName.'@index')      ->name($prefix.'.index');
+    Route::get(     '/create',              $controllerName.'@create')     ->name($prefix.'.create');
+    Route::post(    '/',                    $controllerName.'@store')      ->name($prefix.'.store');
+    Route::get(     '/{id}',                $controllerName.'@show')       ->name($prefix.'.show');
+    Route::get(     '/{id}/edit',           $controllerName.'@edit')       ->name($prefix.'.edit');
+    Route::put(     '/{id}',                $controllerName.'@update')     ->name($prefix.'.update');
+    Route::delete(  '/{id}',                $controllerName.'@destroy')    ->name($prefix.'.destroy');
 });
 
 Route::prefix('product')->group(function() {
-    Route::get(     '/',                    'ProductController@index')      ->name('product.index');
-    Route::get(     '/create',              'ProductController@create')     ->name('product.create');
-    Route::post(    '/',                    'ProductController@store')      ->name('product.store');
-    Route::get(     '/{id}',                'ProductController@show')       ->name('product.show');
-    Route::get(     '/{id}/edit',           'ProductController@edit')       ->name('product.edit');
-    Route::put(     '/{id}',                'ProductController@update')     ->name('product.update');
-    Route::delete(  '/{id}',                'ProductController@destroy')    ->name('product.destroy');
+    $prefix = "product";
+    $controllerName = "ProductController";
+
+    Route::get(     '/',                    $controllerName.'@index')      ->name($prefix.'.index');
+    Route::get(     '/create',              $controllerName.'@create')     ->name($prefix.'.create');
+    Route::post(    '/',                    $controllerName.'@store')      ->name($prefix.'.store');
+    Route::get(     '/{id}',                $controllerName.'@show')       ->name($prefix.'.show');
+    Route::get(     '/{id}/edit',           $controllerName.'@edit')       ->name($prefix.'.edit');
+    Route::put(     '/{id}',                $controllerName.'@update')     ->name($prefix.'.update');
+    Route::delete(  '/{id}',                $controllerName.'@destroy')    ->name($prefix.'.destroy');
 });

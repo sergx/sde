@@ -4,5 +4,6 @@
     "Cart": true,
     "Catalog": true,
     "Order": true,
-    "Contact": true
+    "Contact": true,
+    "Admin": true
 }

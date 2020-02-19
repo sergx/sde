@@ -12,8 +12,21 @@
     {!! Form::open(['route' => 'product_category.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
     {{Form::hidden('org_id', $org->id)}}
     <div class="form-group">
-      {{Form::label('name','Название')}}
-      {{Form::text('name', '', ['class' => 'form-control','placeholder' => 'Название'])}}
+      <div class="form-row">
+        <div class="col-8">
+          {{Form::label('name','Название')}}
+          {{Form::text('name', '', ['class' => 'form-control','placeholder' => 'Название'])}}
+        </div>
+        <div class="col">
+          {{Form::label('category_type_id','Тип категории')}}
+          <select class="form-control" id="category_type_id">
+            <option value="" disabled>Тип категории</option>
+            @foreach ($category_types as $item)
+              <option value="{{$item->id}}">{{$item->name}}</option>
+            @endforeach
+          </select>
+        </div>
+      </div>
     </div>
     <div class="form-group">
       {{Form::label('description','Описание')}}

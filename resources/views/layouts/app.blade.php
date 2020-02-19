@@ -6,6 +6,7 @@
 
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
+  <base href="{{ url('/') }}">
 
   <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -36,6 +37,14 @@
             <li class="nav-item">
               <a href="{{route('cart.index')}}" class="nav-link">Корзина</a>
             </li>
+            @auth
+            <li class="nav-item">
+              <a href="{{ route('home') }}" class="nav-link">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('admin') }}" class="nav-link">Admin</a>
+            </li>
+            @endauth
           </ul>
 
           <!-- Right Side Of Navbar -->
@@ -64,6 +73,9 @@
                   </a>
                   <a class="dropdown-item" href="{{ route('home') }}">
                     Dashboard
+                  </a>
+                  <a class="dropdown-item" href="{{ route('admin') }}">
+                    Admin
                   </a>
 
                   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

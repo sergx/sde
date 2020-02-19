@@ -11,4 +11,5 @@
 |
 */
 
-Route::get('/', 'CatalogController@index');
+Route::get('/',                 'CatalogController@index')->name('index');
+Route::get('/{category_type}',  'CatalogController@filteredByType');

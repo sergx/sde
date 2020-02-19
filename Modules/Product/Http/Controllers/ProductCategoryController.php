@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 
 use Modules\Product\Entities\ProductCategory;
+use Modules\Product\Entities\CategoryType;
 use Modules\Org\Entities\Org;
 
 class ProductCategoryController extends Controller
@@ -31,7 +32,8 @@ class ProductCategoryController extends Controller
         if(auth()->user()->id !== $org->user_id){
             return redirect('/home')->with('error', "Unauthorized Page");
         }
-        return view('product::category-create')->with('org', $org);
+        $category_types = CategoryType::all();
+        return view('product::category-create', ['org' => $org, 'category_types' => $category_types]);
     }
 
     /** Store a newly created resource in storage.
@@ -42,6 +44,7 @@ class ProductCategoryController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'org_id' => 'required',
+            'category_type_id' => 'required',
         ]);
         $org = Org::find($request->input('org_id'));
 
@@ -50,9 +53,10 @@ class ProductCategoryController extends Controller
         }
 
         $productCategory = new ProductCategory;
-        $productCategory->org_id = $request->input('org_id');
-        $productCategory->name = $request->input('name');
-        $productCategory->description = $request->input('description');
+        $productCategory->org_id = $request->org_id;
+        $productCategory->name = $request->name;
+        $productCategory->category_type_id = $request->category_type_id;
+        $productCategory->description = $request->description;
         $productCategory->save();
 
         return redirect()->route('org.show', ['id' => $org->id])->with('success', "Категория товаров <strong>".$request->input('name')."</strong> создана");
@@ -79,8 +83,8 @@ class ProductCategoryController extends Controller
         if(auth()->user()->id !== $productCategory->org->user_id){
             return redirect('/home')->with('error', "Unauthorized Page");
         }
-
-        return view('product::category-edit')->with('productCategory', $productCategory);
+        $category_types = CategoryType::all();
+        return view('product::category-edit', ['productCategory' => $productCategory, 'category_types' => $category_types]);
     }
 
     /** Update the specified resource in storage.
@@ -90,13 +94,18 @@ class ProductCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'name' => 'required',
+            'category_type_id' => 'required',
+        ]);
         $productCategory = ProductCategory::with(['org'])->where('id', $id)->first();
 
         if(auth()->user()->id !== $productCategory->org->user_id){
             return redirect('/home')->with('error', "Unauthorized Page");
         }
-        $productCategory->name = $request->input('name');
-        $productCategory->description = $request->input('description');
+        $productCategory->name = $request->name;
+        $productCategory->description = $request->description;
+        $productCategory->category_type_id = $request->category_type_id;
         $productCategory->save();
 
         return redirect()->route('org.show', ['id' => $productCategory->org->id])->with('success', "Категория товаров обновлена");
