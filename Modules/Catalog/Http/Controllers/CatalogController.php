@@ -36,4 +36,11 @@ class CatalogController extends Controller
         }
         return $category_type;
     }
+
+    public function getOrg($org_id)
+    {
+        $org = Org::with(['productCategories', 'productCategories.products', 'productCategories.category_type'])->where('id', $org_id)->first();
+        $category_types = $org->productCategories->pluck( 'category_type.name', 'category_type.alias')->all();
+        return view('catalog::org', ['org' => $org, 'category_types' => $category_types]);
+    }
 }

@@ -22,7 +22,7 @@
   @foreach ($orgs as $org)
   <div class="card mb-5">
     <div class="card-header">
-      <h5 class="card-title mb-0">{{$org->name}}</h5>
+      <h5 class="card-title mb-0"><a href="{{route('catalog.org', $org->id)}}">{{$org->name}}</a></h5>
     </div>
     <div class="card-body">
       <p class="card-text"><strong>Адрес:</strong> {{$org->address}}</p>
@@ -36,7 +36,7 @@
       @if(count($org->productCategories) > 0)
       @foreach ($org->productCategories as $productCategory)
       @if ($productCategory->category_type->id == $category_type->id)
-          <h2 class="mb-3 mt-3">{{$productCategory->name}}</h2>
+        <h2 class="mb-3 mt-3">{{$productCategory->name}}</h2>
             @if ($productCategory->description)
             <div class="mb-3">
               <p>{!!$productCategory->description!!}</p>

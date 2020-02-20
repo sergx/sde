@@ -11,6 +11,9 @@
             <li class="list-group-item">
                 <a href="{{route('admin.category-type.index')}}">Типы категорий</a>
             </li>
+            <li class="list-group-item">
+                <a href="{{route('admin.order')}}">Заказы</a>
+            </li>
           </ul>
         </div>
       </div>

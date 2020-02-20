@@ -5,37 +5,26 @@
 
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
-      <h1 class="display-4">Акции, акценты</h1>
-      <p class="lead">Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci.</p>
-    </div>
-  </div>
-
-  <nav class="nav nav-pills nav-justified mb-4">
-    <a class="nav-link active" href="{{route('index')}}">Любая</a>
-    @foreach ($category_types as $item)
-    <a class="nav-link p-2" href="{{$item->alias}}"  style="white-space: nowrap;">{{$item->name}}</a>
-    @endforeach
-    <!--<a class="nav-link active" href="#">Active</a>-->
-    <!--<a class="nav-link disabled" href="#">Disabled</a>-->
-  </nav>
-
-  @foreach ($orgs as $org)
-  <div class="card mb-5">
-    <div class="card-header">
-      <h5 class="card-title mb-0"><a href="{{route('catalog.org', $org->id)}}">{{$org->name}}</a></h5>
-    </div>
-    <div class="card-body">
-      <p class="card-text"><strong>Адрес:</strong> {{$org->address}}</p>
-
+      <h1 class="display-4">{{$org->name}}</h1>
+      <p class="lead"><strong>Адрес:</strong> {{$org->address}}</p>
       @if ($org->description)
       <div class="mb-3">
         <p>{!!$org->description!!}</p>
       </div>
       @endif
+    </div>
+  </div>
+
+  <nav class="nav-pills nav-justified mb-4">
+      @foreach ($category_types as $alias => $name)
+        <a class="btn btn-outline-primary" href="place/{{$org->id}}#{{$alias}}" data-typeid="{{$alias}}" style="white-space: nowrap;">{{$name}}</a>
+      @endforeach
+  </nav>
+
 
       @if(count($org->productCategories) > 0)
-      @foreach ($org->productCategories as $productCategory)
-        <h2 class="mb-3 mt-3">{{$productCategory->name}}</h2>
+        @foreach ($org->productCategories as $productCategory)
+          <h2 class="mb-3 mt-3" id="{{$productCategory->category_type->alias}}">{{$productCategory->name}}</h2>
           @if ($productCategory->description)
           <div class="mb-3">
             <p>{!!$productCategory->description!!}</p>
@@ -61,10 +50,7 @@
             @endforeach
           </div>
           @endif
-      @endforeach
+        @endforeach
       @endif
-    </div>
-  </div>
-  @endforeach
 </div>
 @endsection

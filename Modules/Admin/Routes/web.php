@@ -23,8 +23,9 @@ Route::prefix('admin')->group(
      * 
      * Вероятно - отдельная авторизация для админа
      */
-    Route::get('/', 'AdminController@index')->name('admin');
-
+    Route::get('/',                    'AdminController@index')    ->name('admin');
+    
+    Route::get('/order',         'AdminController@getOrders')  ->name('admin.order');
 
     Route::prefix('category-type')->group(function() {
         $prefix = 'admin.category-type';

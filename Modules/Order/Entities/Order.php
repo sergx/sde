@@ -10,6 +10,10 @@ class Order extends Model
     {
         return $this->belongsTo('App\User');
     }
+    public function org()
+    {
+        return $this->belongsTo('Modules\Org\Entities\Org');
+    }
 
     public function products()
     {

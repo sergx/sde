@@ -135,8 +135,8 @@ class OrgController extends Controller
         }
     }
 
-    public function getOrders($id){
-
+    public function getOrders($id)
+    {
         $org = Org::find($id);
 
         if(auth()->user()->id !== $org->user_id){

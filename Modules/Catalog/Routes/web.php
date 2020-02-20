@@ -11,5 +11,9 @@
 |
 */
 
-Route::get('/',                 'CatalogController@index')->name('index');
-Route::get('/{category_type}',  'CatalogController@filteredByType');
+Route::get('/',                   'CatalogController@index')->name('index');
+Route::get('/{category_type}',    'CatalogController@filteredByType');
+
+Route::get('/place/{org_id}',     'CatalogController@getOrg')->name('catalog.org');
+
+
