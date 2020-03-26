@@ -20,7 +20,6 @@
                 <td>{{$item->associatedModel->name}}</td>
                 <td>{{$item->price}}</td>
                 <td>
-
                   {!!Form::open(['route' => ['cart.more', $item->id], 'method' => 'POST', 'class' => 'form-ilnine'])!!}
                     {{Form::submit('-1',['class' => 'btn btn-outline-secondary btn-sm', 'formaction' => route('cart.less', $item->id)])}}
                     {{$item->quantity}}
@@ -38,8 +37,8 @@
           <tfoot>
             <tr>
               <th scope="col"></th>
-              <th scope="col">{{ $total }}</th>
-              <th scope="col">{{ $totalQuantity }}</th>
+              <th scope="col">{{ $cart_total }}</th>
+              <th scope="col">{{ $cart_totalQuantity }}</th>
               <th scope="col">
                 {!!Form::open(['route' => 'cart.clear', 'method' => 'POST', 'class' => ''])!!}
                 {{Form::hidden('_method','DELETE')}}

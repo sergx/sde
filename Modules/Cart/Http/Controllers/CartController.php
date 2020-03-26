@@ -28,13 +28,13 @@ class CartController extends Controller
     public function index()
     {
         $cart = Cart::getContent();
-        $total = Cart::getTotal();
-        $totalQuantity = Cart::getTotalQuantity();
+        $cart_total = Cart::getTotal();
+        $cart_totalQuantity = Cart::getTotalQuantity();
         //dd($cart);
         return view('cart::index', [
             'cart' => $cart,
-            'total' => $total,
-            'totalQuantity' => $totalQuantity,
+            'cart_total' => $cart_total,
+            'cart_totalQuantity' => $cart_totalQuantity,
         ]);
     }
 

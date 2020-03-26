@@ -1,11 +1,49 @@
 // Fonts
+
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
 @import 'variables';
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+//@import '~bootstrap/scss/bootstrap';
+
+
+
+// Bamburgh
+// Core
+
+@import "../bamburgh-src/vendor/bootstrap/scss/functions";
+@import "../bamburgh-src/scss/variables/functions";
+
+@import "../bamburgh-src/vendor/bootstrap/scss/variables";
+@import "../bamburgh-src/scss/variables/variables";
+
+@import "../bamburgh-src/vendor/bootstrap/scss/mixins";
+@import "../bamburgh-src/scss/variables/mixins";
+
+// Bootstrap base
+
+@import "../bamburgh-src/vendor/bootstrap/bootstrap-base";
+
+// Components
+
+@import "../bamburgh-src/scss/components";
+
+// Presentation blocks
+
+// @import "../bamburgh-src/scss/presentation-blocks";
+
+// Vendors
+
+// @import "../bamburgh-src/vendor/perfect-scrollbar/scss/perfect-scrollbar";
+// @import "../bamburgh-src/vendor/fontawesome-icons/fontawesome-icons";
+// @import "../bamburgh-src/vendor/material-icons/material-icons";
+// @import "../bamburgh-src/vendor/sweet-alerts/sweet-alerts";
+
+
+
 
 // custom
 @import 'custom';
+

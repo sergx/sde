@@ -11,14 +11,16 @@
   <title>{{ config('app.name', 'Laravel') }}</title>
 
   <!-- Scripts -->
-  <script src="{{ asset('js/app.js') }}"></script>
+  <script src="{{ asset('js/app.js').'?h='.md5_file(asset('js/app.js')) }}"></script>
+  <!--<script src="{{ asset('bamburgh-assets/vendor/bootstrap/js/bootstrap.min.js') }}"></script>-->
 
   <!-- Fonts -->
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
   <!-- Styles -->
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/app.css').'?h='.md5_file(asset('css/app.css')) }}" rel="stylesheet">
+  <!--<link href="{{ asset('bamburgh-assets/css/bamburgh.min.css') }}" rel="stylesheet">-->
 </head>
 <body>
   <div id="app">

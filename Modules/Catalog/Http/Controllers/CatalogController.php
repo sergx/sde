@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use Modules\Org\Entities\Org;
 use Modules\Product\Entities\CategoryType;
 
+use Cart; // https://github.com/darryldecode/laravelshoppingcart
+
 class CatalogController extends Controller
 {
 
@@ -41,6 +43,15 @@ class CatalogController extends Controller
     {
         $org = Org::with(['productCategories', 'productCategories.products', 'productCategories.category_type'])->where('id', $org_id)->first();
         $category_types = $org->productCategories->pluck( 'category_type.name', 'category_type.alias')->all();
-        return view('catalog::org', ['org' => $org, 'category_types' => $category_types]);
+
+        if (auth()->check()) {
+            Cart::session(auth()->user()->id);
+        }
+
+        $cart = Cart::getContent();
+        $cart_total = Cart::getTotal();
+        $cart_totalQuantity = Cart::getTotalQuantity();
+
+        return view('catalog::org', ['org' => $org, 'category_types' => $category_types, 'cart' => $cart, 'cart_total' => $cart_total, 'cart_totalQuantity' => $cart_totalQuantity,]);
     }
 }
