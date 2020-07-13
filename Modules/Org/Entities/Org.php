@@ -22,4 +22,9 @@ class Org extends Model
     {
         return $this->hasMany('Modules\Order\Entities\Order');
     }
+
+    public function actions()
+    {
+        return $this->hasMany('Modules\Action\Entities\Action');
+    }
 }

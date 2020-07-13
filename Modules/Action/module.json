@@ -1,0 +1,13 @@
+{
+    "name": "Action",
+    "alias": "action",
+    "description": "",
+    "keywords": [],
+    "order": 0,
+    "providers": [
+        "Modules\\Action\\Providers\\ActionServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

@@ -23,6 +23,12 @@
       </div>
     </div>
   </div>
+
+  <div class="d-flex justify-content-between mb-3">
+    <h2 class="mb-0">Акции</h2>
+    <a href="{{route('action.create', ['org_id' => $org->id])}}" class="btn btn-success pull-right">Добавить</a>
+  </div>
+
   <div class="d-flex justify-content-between mb-3">
     <h2 class="mb-0">Категории товаров</h2>
     <a href="{{route('product_category.create', ['org_id' => $org->id])}}" class="btn btn-success pull-right">Добавить</a>
